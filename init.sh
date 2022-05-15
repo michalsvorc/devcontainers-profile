@@ -17,6 +17,7 @@ set -o pipefail     # Don't hide errors within pipes.
 #===============================================================================
 
 version='1.0.0'
+argv0=${0##*/}
 shell='/bin/zsh'
 editor='vim'
 
@@ -92,7 +93,7 @@ init() {
 # Execution
 #===============================================================================
 
-test $# -eq 0 && init
+test $# -eq 0 && init && exit 0
 
 case "${1:-}" in
   -h | --help )
