@@ -20,6 +20,7 @@ version='1.0.0'
 argv0=${0##*/}
 shell='/bin/zsh'
 editor='vim'
+profile_dir="${HOME}/.local/profile"
 
 #===============================================================================
 # Usage
@@ -78,15 +79,16 @@ create_symlink() {
 init() {
   export_env_variables "${HOME}/.profile"
 
-  create_symlink 'config' "${HOME}/.config"
-  file='profile';       create_symlink "${HOME}/.${file}" "${HOME}/.z${file}"
-  file='logout';        create_symlink "${file}.sh"       "${HOME}/.z${file}"
-  file='zshrc';         create_symlink "${file}.sh"       "${HOME}/.${file}"
-  file='editorconfig';  create_symlink "$file"            "${HOME}/.${file}"
-  file='gitconfig';     create_symlink "$file"            "${HOME}/.${file}"
-  file='vimrc';         create_symlink "$file"            "${HOME}/.${file}"
-  file='tigrc';         create_symlink "$file"            "${HOME}/.${file}"
-  file='tmux.conf';     create_symlink "$file"            "${HOME}/.${file}"
+  file='profile';       create_symlink "${HOME}/.${file}"           "${HOME}/.z${file}"
+  file='logout';        create_symlink "${profile_dir}/${file}.sh"  "${HOME}/.z${file}"
+  file='zshrc';         create_symlink "${profile_dir}/${file}.sh"  "${HOME}/.${file}"
+  file='editorconfig';  create_symlink "${profile_dir}/$file"       "${HOME}/.${file}"
+  file='gitconfig';     create_symlink "${profile_dir}/$file"       "${HOME}/.${file}"
+  file='vimrc';         create_symlink "${profile_dir}/$file"       "${HOME}/.${file}"
+  file='tigrc';         create_symlink "${profile_dir}/$file"       "${HOME}/.${file}"
+  file='tmux.conf';     create_symlink "${profile_dir}/$file"       "${HOME}/.${file}"
+
+  dir='config';         create_symlink "${profile_dir}/${dir}"      "${HOME}/.${dir}"
 }
 
 #===============================================================================
