@@ -60,7 +60,7 @@ export_env_variables() {
   printf '
 export SHELL=%s
 export EDITOR=%s
-export PATH=\"%s:\${PATH}\"
+export PATH=\"%s:${PATH}\"
 ' \
     "$shell" \
     "$editor" \
