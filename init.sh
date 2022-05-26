@@ -76,26 +76,32 @@ create_symlink() {
   ln -sfn "$source" "$target"
 }
 
-init() {
-  export_env_variables "${HOME}/.profile"
-
+link_home() {
   file='profile';       create_symlink "${HOME}/.${file}"           "${HOME}/.z${file}"
   file='logout';        create_symlink "${profile_dir}/${file}.sh"  "${HOME}/.z${file}"
   file='zshrc';         create_symlink "${profile_dir}/${file}.sh"  "${HOME}/.${file}"
-  file='editorconfig';  create_symlink "${profile_dir}/$file"       "${HOME}/.${file}"
-  file='gitconfig';     create_symlink "${profile_dir}/$file"       "${HOME}/.${file}"
-  file='vimrc';         create_symlink "${profile_dir}/$file"       "${HOME}/.${file}"
-  file='tigrc';         create_symlink "${profile_dir}/$file"       "${HOME}/.${file}"
-  file='tmux.conf';     create_symlink "${profile_dir}/$file"       "${HOME}/.${file}"
+  file='editorconfig';  create_symlink "${profile_dir}/${file}"     "${HOME}/.${file}"
+  file='gitconfig';     create_symlink "${profile_dir}/${file}"     "${HOME}/.${file}"
+  file='vimrc';         create_symlink "${profile_dir}/${file}"     "${HOME}/.${file}"
+  file='tigrc';         create_symlink "${profile_dir}/${file}"     "${HOME}/.${file}"
+  file='tmux.conf';     create_symlink "${profile_dir}/${file}"     "${HOME}/.${file}"
+}
 
+link_config() {
   dir='config';         create_symlink "${profile_dir}/${dir}"      "${HOME}/.${dir}"
+}
+
+main() {
+  export_env_variables "${HOME}/.profile"
+  link_home
+  link_config
 }
 
 #===============================================================================
 # Execution
 #===============================================================================
 
-test $# -eq 0 && init && exit 0
+test $# -eq 0 && main && exit 0
 
 case "${1:-}" in
   -h | --help )
