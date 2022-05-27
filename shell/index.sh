@@ -1,6 +1,6 @@
 
 #===============================================================================
-# Shell partials
+# Shared shell configuration sourced by interactive and login shells
 #===============================================================================
 
 shell_partials_dir="${HOME}/.local/profile/shell"

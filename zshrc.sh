@@ -1,7 +1,7 @@
 # Zsh configuration
 
 #===============================================================================
-# Varaibles
+# Variables
 #===============================================================================
 
 shell_config_dir="${HOME}/.local/profile/shell"
@@ -10,7 +10,7 @@ shell_config_dir="${HOME}/.local/profile/shell"
 # Shared shell configuration
 #===============================================================================
 
-source "${shell_config_dir}/_index.sh"
+source "${shell_config_dir}/index.sh"
 
 #===============================================================================
 # Colors
@@ -29,10 +29,9 @@ setopt PROMPT_SUBST
 source "${shell_config_dir}/plugins/git_prompt.sh"
 
 #===============================================================================
-# Settings
+# History
 #===============================================================================
 
-# History file
 HISTFILE=~/.cache/zsh_history
 setopt INC_APPEND_HISTORY \
   HIST_IGNORE_SPACE \
@@ -123,4 +122,6 @@ if [[ -f "/usr/local/share/${zsh_syntax_highlighting}" ]]; then
   source "/usr/local/share/${zsh_syntax_highlighting}"
 elif [[ -f "/usr/share/${zsh_syntax_highlighting}" ]]; then
   source "/usr/share/${zsh_syntax_highlighting}"
+elif [[ -f "/opt/homebrew/opt/zsh-syntax-highlighting/share/${zsh_syntax_highlighting}" ]]; then
+  source "/opt/homebrew/opt/zsh-syntax-highlighting/share/${zsh_syntax_highlighting}"
 fi
