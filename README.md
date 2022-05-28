@@ -4,7 +4,7 @@ Default profile for [Dev containers](link).
 
 ## Usage
 
-Create configuration files softlinks in $HOME directory:
+Create soft links to configuration files in $HOME:
 
 ```console
 $ ./init.sh
